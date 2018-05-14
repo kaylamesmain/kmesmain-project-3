@@ -7,15 +7,18 @@ function spacebarPress(event){
   }
 
 function getScreen(screenId) {
-	fetch('/api/setup/screen/' + screenId).then(function(response) {
-		if (response.status !== 200) {
-			console.log(response.status + " msg: " + response.value);
-			return;
-		}
-	response.text().then(function(data) {
-		gameContainer.innerHTML = data;
-		})
-	});
+	fetch('/api/setup/screen/' + screenId)
+		.then(function(response) {
+			if (response.status !== 200) {
+				console.log(response.status + " msg: " + response.value);
+				return;
+			}
+
+			response.text()
+				.then(function(data) {
+					gameContainer.innerHTML = data;
+				})
+		});
 }
 
 getScreen(0);
@@ -67,7 +70,7 @@ gameContainer.addEventListener("click", function(e) {
 	//gameScreen();
 });
 
-//save your start month 
+//save your start month
 function saveStartMonth(startMonth) {
 	fetch('/api/setup/startMonth',
 	{
@@ -88,7 +91,7 @@ function saveStartMonth(startMonth) {
 	});
 }
 
-//save player money 
+//save player money
 function savePlayerMoney(playerMoney) {
 	fetch('/api/setup/playerMoney',
 	{
@@ -110,7 +113,7 @@ function savePlayerMoney(playerMoney) {
 }
 
 
-//save wagon leader name 
+//save wagon leader name
 function saveWagonLeader(leader) {
 	fetch('/api/setup/leader',
 	{
@@ -131,7 +134,7 @@ function saveWagonLeader(leader) {
 	});
 }
 
-// save all 4 player names 
+// save all 4 player names
 function saveMemberName(memberName) {
 	fetch('/api/setup/memberName',
 	{
@@ -151,7 +154,7 @@ function saveMemberName(memberName) {
 		console.log("memberName " + memberName + " saved!");
 	});
 }
-//save the profession type 
+//save the profession type
 function saveProfession(profession) {
 	fetch('/api/setup/profession',
 	{
@@ -173,4 +176,4 @@ function saveProfession(profession) {
 }
 
 
-window.addEventListener("keypress", spacebarPress)
+window.addEventListener("keypress", spacebarPress);

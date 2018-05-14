@@ -2,12 +2,10 @@ var pace = require('./pace.js');
 var weather = require('./weather.js');
 var terrain = require('./terrain.js');
 
-//setting player information 
-function gameData(playerNames) {
-	this.playerNames = playerNames;
-	this.playerStatus = [true, true, true, true, true];
+//setting player information
+function gameData() {
 	this.leader="";
-	this.group;
+    this.playerNames = [];
 	this.playerProfession="";
 	this.playerMoney = 500;
 	this.startMonth="";
@@ -20,13 +18,13 @@ function gameData(playerNames) {
 	this.messages = [];
 }
 
-//calculate the health 
+//calculate the health
 exports.calculateHealth = function(health){
 	health = health + weather.getRandomWeather().healthChange + pace.setChangePace().healthChange
 	return health;
 }
 
-//stating the status of your health and if you lose 
+//stating the status of your health and if you lose
 exports.groupHealthStatus = function(health){
 	 if(health >= 80){
  		return 'good'
@@ -69,7 +67,7 @@ exports.getGameData = function(playerNames, playerProfession, startMonth, curren
 	return new gameData(playerNames, playerProfession, startMonth, currentPace, health, playerMoney);
 }
 
-//changes the pace 
+//changes the pace
 exports.changePace = function(name){
 	currentGameData[currentPace] = pace.getPace(name)
 }

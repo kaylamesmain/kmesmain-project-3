@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/MaristGormanly/kmesmain-project-#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "request": "^2.85.0"
   }
 }
